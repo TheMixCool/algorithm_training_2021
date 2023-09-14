@@ -14,7 +14,14 @@ int GetCount(std::map<std::pair<int, int>, int>& mp) {
 	for (auto& [f, s] : mp) {
 		mp2[f.second]++;
 	}
-	return mp1.size() + mp2.size() - 2;
+
+	for (auto& ch : mp1) {
+		count += ch.second - 1;
+	}
+	for (auto& ch : mp2) {
+		count += ch.second - 1;
+	}
+	return count;
 }
 
 
@@ -25,7 +32,7 @@ int main() {
 	mp[std::pair<int, int>(1, 2)]++;
 	mp[std::pair<int, int>(1, 3)]++;
 	mp[std::pair<int, int>(2, 2)]++;
-
+	mp[std::pair<int, int>(2, 3)]++;
 	std::cout << GetCount(mp);
 
 }
